@@ -12,6 +12,24 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Name:</strong>
+                        {{ $student->name }}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Contact:</strong>
+                        {{ $student->contact }}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Email:</strong>
+                        {{ $student->email }}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Position Name:</strong>
                         {{ $resultApplicant->position_name }}
                     </div>
                 </div>
@@ -27,34 +45,38 @@
                         {{ $resultApplicant->company->name}}
                     </div>
                 </div>
+
+                <!-- Pivot Data IC, Address,day of birth, status-->
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>IC:</strong>
-                        {{ $student->ic }}
+                        @foreach($student->position as $p)
+                        {{ $p->pivot->ic }}
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Address:</strong>
-                        {{ $resultApplicant->addresss }}
+                        @foreach($student->position as $p)
+                        {{ $p->pivot->address }}
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Status:</strong>
-                        {{ $resultApplicant->status }}
+                        @foreach($student->position as $p)
+                        {{ $p->pivot->status}}
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Day of Birth:</strong>
-                        {{ $resultApplicant->day_of_birth}}
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>email:</strong>
-                        {{ $resultApplicant->email }}
+                        @foreach($student->position as $p)
+                        {{ $p->pivot->day_of_birth}}
+                        @endforeach
                     </div>
                 </div>
                 <div class="pull-right">
