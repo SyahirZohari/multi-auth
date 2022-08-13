@@ -17,7 +17,7 @@
 <table class="table table-bordered">
     <tr>
         <th>No</th>
-        <th>Name</th>
+        <th>Company Name</th>
         <th>Address</th>
         <th>Contact</th>
     </tr>
