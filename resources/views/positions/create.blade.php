@@ -26,7 +26,7 @@
      <div class="card">
     <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
-                <strong>Name:</strong>
+                <strong>Job Position Name:</strong>
                 <input type="text" name="position_name" class="form-control" placeholder="Name" required>
             </div>
     </div>
