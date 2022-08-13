@@ -19,19 +19,19 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Desription:</strong>
+                <strong>Job Desription:</strong>
                 {{ $position->position_desc }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Department:</strong>
+                <strong>Job Department:</strong>
                 {{ $position->position_department }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Salary:</strong>
+                <strong>Job Salary:</strong>
                 {{ $position->position_salary }}
             </div>
         </div>
