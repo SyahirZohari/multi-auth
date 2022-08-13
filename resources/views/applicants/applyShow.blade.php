@@ -12,6 +12,7 @@
 
     <div class="card">
         <div class="row">
+            <!-- Pivot Data IC, Address,day of birth, status-->
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>IC:</strong>

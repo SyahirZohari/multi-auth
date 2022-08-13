@@ -38,7 +38,8 @@
                         <td class="align-middle text-center">{{ $a->company->name}}</td>
                         <td class="align-middle text-center">{{ $a->pivot->status }}</td>
                         <td class="text-secondary font-weight-bold text-xs">
-                                <a class="btn btn-info" href="{{ route('resultApplicants.show',$a->id) }}">Show</a>
+                                <a class="btn btn-info" href="{{ route('resultApplicants.show',['resultApplicant'=>$a->id,'student'=>$student->id]) }}">Show</a>
+                                <a class="btn btn-primary" href="{{ route('resultApplicants.edit',['resultApplicant'=>$a->id,'student'=>$student->id]) }}">Update</a>
    
                         </td>
                     </tr>

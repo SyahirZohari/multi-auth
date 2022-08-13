@@ -34,7 +34,7 @@ class ResultApplicantController extends Controller
         return view('students.resultApplicant',compact('applicant','student','position'));
     }
 
-    public function show(Position $resultApplicant)
+    public function show(Position $resultApplicant, Student $student)
     { 
 
        
@@ -45,21 +45,23 @@ class ResultApplicantController extends Controller
     }
 
     
-    public function edit(Position $resultApplicant)
+    public function edit(Position $resultApplicant, Student $student)
     {
-        return view('students.applicantEdit',compact('resultApplicant'));
+        return view('students.applicantEdit',compact('resultApplicant', 'student'));
     }
 
    
-    public function update(Request $request, Position $position)// hanya copy paste je nie dari conttolrer lain tak tukar lagi
+    public function update(Request $request, Applicant $resultApplicant)// hanya copy paste je nie dari conttolrer lain tak tukar lagi
     {
         $request->validate([
-            'position_name' => 'required',
-            'position_desc' => 'required',
-            'position_salary' => 'required',
+            'ic' => 'required',
+            'address' => 'required',
+            'day_of_birth' => 'required',
+            'contact' => 'required',
+            'martial_status' => 'required',
         ]);
   
-        $position->update($request->all());
+        $resultApplicant->update($request->all());
   
         return redirect()->route('positions.index')
                         ->with('success','Position updated successfully');

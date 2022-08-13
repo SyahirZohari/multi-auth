@@ -70,7 +70,11 @@ Route::group(['middleware' => 'auth:student'], function () {
     Route::get('applys/create/{apply}','ApplyController@create')->name('applys.create');
     Route::get('applys/{apply}','ApplyController@show')->name('applys.show');
     Route::resource('skills','SkillController');
-    Route::resource('resultApplicants','ResultApplicantController');
+    Route::get('resultApplicants','ResultApplicantController@index')->name('resultApplicants.index');
+    Route::get('resultApplicants/{resultApplicant}/{student}','ResultApplicantController@show')->name('resultApplicants.show');
+    Route::get('resultApplicants/{resultApplicant}','ResultApplicantController@update')->name('resultApplicants.update');
+    Route::get('resultApplicants/{resultApplicant}/{student}/edit','ResultApplicantController@edit')->name('resultApplicants.edit');
+    //Route::resource('resultApplicants','ResultApplicantController');
     //Route::get('skills','SkillController@index')->name('skills.index');
     //Route::post('skills/{skill}','SkillController@store')->name('skills.store');
    });
