@@ -24,10 +24,12 @@ class Position extends Model
     {
         return $this->belongsTo(Company::class);
     }
-    public function student()
+
+    public function students()
     {
-        return $this->belongsToMany(Student::class,'applicants')
-        ->withPivot(['status','martial_status','ic','address','email','day_of_birth']);
+        return $this->belongsToMany(Student::class,'applicants','student_id','position_id')
+        ->withPivot(['status','martial_status','ic','address','email','day_of_birth'])
+        ->using(Applicant::class);
     }
-    
+
 }

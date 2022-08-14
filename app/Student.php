@@ -27,9 +27,10 @@ class Student extends Authenticatable
         return $this->hasOne(Resume::class);
     }
 
-    public function position()
+    public function positions()
     {
-        return $this->belongsToMany(Position::class,'applicants')
-        ->withPivot(['status','martial_status','ic','address','email','day_of_birth']);
+        return $this->belongsToMany(Position::class,'applicants','student_id','position_id')
+        ->withPivot(['status','martial_status','ic','address','email','day_of_birth','contact'])
+        ->using(Applicant::class);
     }
 }
