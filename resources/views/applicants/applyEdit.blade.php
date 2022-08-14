@@ -14,40 +14,40 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>IC:</strong>
-                {{ $applicant->positions->first()->pivot->ic }}
+                {{ $applicant->ic }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Email:</strong>
-                {{ $applicant->positions->first()->pivot->email }}
+                {{ $applicant->email }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Day Of Birth:</strong>
-                {{ $applicant->positions->first()->pivot->day_of_birth }}
+                {{ $applicant->day_of_birth }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Address:</strong>
-                {{ $applicant->positions->first()->pivot->address }}
+                {{ $applicant->address }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Contact:</strong>
-                {{ $applicant->positions->first()->pivot->contact }}
+                {{ $applicant->contact }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Martial Status:</strong>
-                {{ $applicant->positions->first()->pivot->martial_status }}
+                {{ $applicant->martial_status }}
             </div>
         </div>
-        <form action="{{ route('applicants.update',$applicant->positions->first()->pivot->id) }}" method="POST">
+        <form action="{{ route('applicants.update',$applicant->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -55,10 +55,10 @@
                     <strong>Status:</strong>
                     <select class="form-control" name="status">
                         <option value="">--Choose Status--</option>
-                        <option value="Approved" @if ($applicant->positions->first()->pivot->status === 'Approved')
+                        <option value="Approved" @if ($applicant->status === 'Approved')
                             {{ ' selected' }}
                         @endif>Approved</option>
-                        <option value="Rejected" @if ($applicant->positions->first()->pivot->status === 'Rejected')
+                        <option value="Rejected" @if ($applicant->status === 'Rejected')
                             {{ ' selected' }}
                         @endif>Rejected</option>
                     </select>

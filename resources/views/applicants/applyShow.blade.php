@@ -16,61 +16,61 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>IC:</strong>
-                    {{ $applicant->positions->first()->pivot->ic }}
+                    {{ $applicant->ic }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Email:</strong>
-                    {{ $applicant->positions->first()->pivot->email }}
+                    {{ $applicant->email }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Day Of Birth:</strong>
-                    {{ $applicant->positions->first()->pivot->day_of_birth }}
+                    {{ $applicant->day_of_birth }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Address:</strong>
-                    {{ $applicant->positions->first()->pivot->address }}
+                    {{ $applicant->address }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Contact:</strong>
-                    {{ $applicant->positions->first()->pivot->contact }}
+                    {{ $applicant->contact }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Martial Status:</strong>
-                    {{ $applicant->positions->first()->pivot->martial_status }}
+                    {{ $applicant->martial_status }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Position Name:</strong>
-                    {{ $applicant->positions->first()->position_name }}
+                    {{ $position->position_name }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Company Name:</strong>
-                    {{ $applicant->positions->first()->company->name }}
+                    {{ $position->company->name }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Salary:</strong>
-                    {{ $applicant->positions->first()->position_salary}}
+                    {{ $position->position_salary}}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Department:</strong>
-                    {{ $applicant->positions->first()->position_department }}
+                    {{ $position->position_department }}
                 </div>
             </div>
 

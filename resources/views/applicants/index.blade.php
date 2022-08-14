@@ -22,23 +22,23 @@
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" width="280px">Action</th>
                         </tr>
                         <tbody>
-                        @foreach ($positions as $position)
-                        @foreach($position->students as $student)
-                        <tr>
-                            <td class="text-xs font-weight-bold mb-0">{{ $student->pivot->id }}</td>
-                            <td class="align-middle text-center text-sm">{{ $student->name }}</td>
-                            <td class="align-middle text-center text-sm">{{ $student->email }}</td>
-                            <td class="align-middle text-center">{{ $student->pivot->contact}}</td>
-                            <td class="align-middle text-center">{{ $position->position_name}}</td>
-                            <td class="align-middle text-center">{{ $student->pivot->status }}</td>
-                            <td class="text-secondary font-weight-bold text-xs">
-                                    <a class="btn btn-info" href="{{ route('applicants.show',['applicant'=>$student->pivot->id]) }}">Show</a>
-                                    <a class="btn btn-primary" href="{{ route('applicants.edit',['applicant'=>$student->pivot->id]) }}">Status</a>
-                            </td>
-                        </tr>
-                        </tbody>
+                        @foreach($positions as $position)
+                            @foreach($position->students as $student)
+                                <tr>
+                                    <td class="text-xs font-weight-bold mb-0">{{ $student->pivot->id }}</td>
+                                    <td class="align-middle text-center text-sm">{{ $student->name }}</td>
+                                    <td class="align-middle text-center text-sm">{{ $student->pivot->email }}</td>
+                                    <td class="align-middle text-center">{{ $student->pivot->contact}}</td>
+                                    <td class="align-middle text-center">{{ $position->position_name}}</td>
+                                    <td class="align-middle text-center">{{ $student->pivot->status }}</td>
+                                    <td class="text-secondary font-weight-bold text-xs">
+                                            <a class="btn btn-info" href="{{ route('applicants.show',['applicant'=>$student->pivot->id]) }}">Show</a>
+                                            <a class="btn btn-primary" href="{{ route('applicants.edit',['applicant'=>$student->pivot->id]) }}">Status</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         @endforeach
-                        @endforeach
+                    </tbody>
                     </div>
                 </table>
             </div>
