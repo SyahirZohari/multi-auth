@@ -25,20 +25,20 @@ class ApplicantController extends Controller
 
     public function show(Applicant $applicant)
     {
-        $applicant = Student::with('positions')->whereHas('positions', function($q) use ($applicant){
+        $position = Position::whereHas('students', function($q) use ($applicant){
             $q->where('applicants.id', $applicant->id);
         })->first();
 
-        return view('applicants.applyShow',compact('applicant')); //view page utk show ada error 404
+        return view('applicants.applyShow',compact('applicant','position'));
     }
 
     public function edit(Applicant $applicant)
     {
-        $applicant = Student::with('positions')->whereHas('positions', function($q) use ($applicant){
+        $position = Position::whereHas('students', function($q) use ($applicant){
             $q->where('applicants.id', $applicant->id);
         })->first();
 
-        return view('applicants.applyEdit',compact('applicant')); //view page utk update ada error 404
+        return view('applicants.applyEdit',compact('applicant','position'));
     }
 
     public function update(Request $request, Applicant $applicant)
