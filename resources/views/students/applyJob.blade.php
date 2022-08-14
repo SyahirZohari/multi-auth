@@ -31,8 +31,12 @@
                         <td class="align-middle text-center">{{ $p->industry->name }}</td>
                         <td class="text-secondary font-weight-bold text-xs">
                                 <a class="btn btn-info" href="{{ route('applys.show',$p->id) }}">Show</a>
+                                @if (in_array($p->id, $appliedIds))
+                                <button class="btn btn-outline-secondary" type="button" disabled>Applied</button>
+                                @else
+                                <a class="btn btn-primary" href="{{ route('applys.create',$p->id) }}" >Apply</a>
+                                @endif
 
-                                <a class="btn btn-primary" href="{{ route('applys.create',$p->id) }}" >Apply</a>      
                         </td>
                     </tr>
                     </tbody>
