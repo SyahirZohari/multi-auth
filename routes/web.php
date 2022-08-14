@@ -46,6 +46,11 @@ Route::resource('companies','CompanyController');
 Route::resource('positions','PositionController');
 Route::resource('resumes','ResumeController');
 
+Route::group(['middleware' => ['auth:student,industry']], function() {
+   
+    Route::get('download/{resume}', 'DownloadCPREController@download')->name('cpre_doc.download');
+  });
+
 
 
 
@@ -75,7 +80,7 @@ Route::group(['middleware' => 'auth:student'], function () {
     Route::put('resultApplicants/{resultApplicant}','ResultApplicantController@update')->name('resultApplicants.update');
     Route::get('resultApplicants/{Applicant}/edit','ResultApplicantController@edit')->name('resultApplicants.edit');
 
-    Route::get('download/{cpre_doc}', 'DownloadCPREController@download')->name('cpre_doc.download');
+    
     //Route::resource('resultApplicants','ResultApplicantController');
     //Route::get('skills','SkillController@index')->name('skills.index');
     //Route::post('skills/{skill}','SkillController@store')->name('skills.store');

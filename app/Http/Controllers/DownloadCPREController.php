@@ -15,13 +15,16 @@ use Response;
 use DB;
 use phpDocumentor\Reflection\File as ReflectionFile;
 
+ 
+
 class DownloadCPREController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:student');
-       
+        
+        
     }
+    
 
   /**
  * download file
@@ -30,10 +33,11 @@ class DownloadCPREController extends Controller
  *
  * @return \Illuminate\Auth\Access\Response
  */
-    public function download($cpre_doc)
+    public function download(Resume $resume)
     {
-    
-        return response()->download(storage_path("app/documents/{$cpre_doc}"));
+        //dd($resume);
+        return Storage::download($resume->cpre_doc);
+        //return response()->download(storage_path("app/documents/{$cpre_doc}"));
       
     }
 
