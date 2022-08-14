@@ -10,7 +10,7 @@
         </div>
     </div>
    <div class="card">
-    <div class="row">
+    <div class="row mt-2">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
@@ -78,31 +78,45 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Desc</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Skill valid</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                   </tr>
-                  @foreach ($skills as $s)
+                  @foreach ($skills as $skill)
                   <tbody>
                   <tr>
-                      <td class="align-middle text-center text-sm">{{ $s->id }}</td>
-                      <td class="align-middle text-center text-sm">{{ $s->name }}</td>
-                      <td class="align-middle text-center text-sm">{{ $s->desc }}</td>
-                      <td class="align-middle text-center text-sm">
+                    <td class="align-middle text-center text-sm">{{ $skill->id }}</td>
+                    <td class="align-middle text-center text-sm">{{ $skill->name }}</td>
+                    <td class="align-middle text-center text-sm">{{ $skill->desc }}</td>
+                    <td class="align-middle text-center text-sm">
+                        @if (!in_array($skill->id, $endorsedIds))
+                            {{ 'Pending for endorsement' }}
+                        @else
+                            {{ $endorsedArray[$skill->id] }}
+                        @endif
+                    </td>
+                    <td class="align-middle text-center text-sm">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#endorseSkillModel{{$s->id}}"  href="{{ route('endorse.create',$s->id) }}">
-                             Endorse
+                        @if (in_array($skill->id, $endorsedIds))
+                        <button type="button" class="btn btn-outline-secondary" disabled>
+                            Endorsed
                         </button>
-                      </td>
+                        @else
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#endorseSkillModel{{$skill->id}}"  href="{{ route('endorse.create',$skill->id) }}">
+                            Endorse
+                        </button>
+                        @endif
+                    </td>
                   </tr>
                   </tbody>
                   @endforeach
               </table>
           </div>
 
-          
 
-          @foreach ($skills as $s)
+
+          @foreach ($skills as $skill)
           <!-- Modal -->
-          <div class="modal fade" id="endorseSkillModel{{$s->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="endorseSkillModel{{$skill->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -112,7 +126,7 @@
                 <form action="{{ route('endorse.store') }}" method="POST">
                 <div class="modal-body">
                     {{csrf_field()}}
-                       
+
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="endorse_status" id="inlineRadio1" value="Yes">
                         <label class="form-check-label" for="inlineRadio1">Yes</label>
@@ -122,12 +136,12 @@
                         <label class="form-check-label" for="inlineRadio2">No</label>
                       </div>
 
-                      <input type="hidden" name="skill_id" value="{{$s->id}}">
+                      <input type="hidden" name="skill_id" value="{{$skill->id}}">
 
 
 
                     </div>
-                
+
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -137,7 +151,7 @@
             </div>
         </div>
         @endforeach
-        <div class="pull-right">
+        <div class="pull-right mt-2 mb-2">
                 <a class="btn btn-primary" href="{{ route('studResume.index') }}"> Back</a>
         </div>
     </div>

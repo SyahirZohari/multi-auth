@@ -6,6 +6,7 @@ use App\Student;
 use App\Resume;
 use App\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudResumeController extends Controller
 {
@@ -14,41 +15,39 @@ class StudResumeController extends Controller
         $this->middleware('auth:lecturer');
     }
 
-   
     public function index()
     {
         $studResume= Resume::with('student')
         ->get();
-  
+
         return view('lecturers.studentResume',compact('studResume'));
     }
 
-   
-
-    
-    public function show(Resume $studResume)
+    public function show($studResumeId)
     {
-       
-
-
+        $studResume = Resume::find($studResumeId);
         $skills= Skill::with('resume') //NAK KELUARKAN SKILL YANG TAK DIENDORSEKAN LAGI SAHAJA
-        ->where ('resume_id',$studResume->id)// maybe tambah condition ker kalo dah di endorse
+        ->where ('resume_id',$studResumeId)// maybe tambah condition ker kalo dah di endorse
         ->get();
 
-    
-        return view('lecturers.studResumeShow',compact('studResume','skills'));
+        $endorsed = DB::table('endorse_skills')
+        ->select('*')
+        ->whereIn('skill_id', $skills->pluck('id')->toArray())
+        ->get();
 
+        $endorsedArray = array();
+        foreach ($endorsed as $key => $endorsed_value) {
+            $endorsedArray[$endorsed_value->id]=$endorsed_value->endorse_status;
+        }
+
+        $endorsedIds = $endorsed->pluck('id')->toArray();
+        return view('lecturers.studResumeShow',compact('studResume','skills','endorsedIds','endorsedArray'));
     }
 
-    
-
-
-    
     public function destroy(Resume $studResume)
     {
         $studResume->delete();
 
-       return redirect()->route('lecturers.studentResume')
-       ->with('success','Resume deleted successfully');
+       return redirect()->route('lecturers.studentResume')->with('success','Resume deleted successfully');
     }
 }

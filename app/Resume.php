@@ -18,7 +18,7 @@ class Resume extends Model
         return $this->belongsTo(Student::class,'student_id');
     }
 
-    public function skill()
+    public function skills()
     {
     	return $this->hasMany(Skill::class);
     }
