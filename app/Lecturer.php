@@ -4,6 +4,7 @@ namespace App;
 use App\Skill;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 
 class Lecturer extends Authenticatable
 {
@@ -19,8 +20,17 @@ class Lecturer extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function skill()
+    public function skills()
     {
         return $this->belongsToMany(Skill::class,'endorse_skills');
+    }
+
+    public function endorse($skill_id)
+    {
+        return DB::table('endorse_skills')
+        ->select('endorse_status')
+        ->where('lecturer_id',$this->id)
+        ->where('skill_id', $skill_id)
+        ->first();
     }
 }

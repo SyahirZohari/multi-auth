@@ -18,10 +18,8 @@ class Skill extends Model
         return $this->belongsTo(Resume::class,'resume_id');
     }
 
-    public function lecturer()
+    public function lecturers()
     {
         return $this->belongsToMany(Lecturer::class,'endorse_skills');
     }
-
- 
 }

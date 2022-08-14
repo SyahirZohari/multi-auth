@@ -9,9 +9,9 @@
             </div>
         </div>
     </div>
-  
+
    <div class="card">
-    <div class="row">
+    <div class="row mt-2">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
@@ -76,7 +76,7 @@
             <button type="button" class="col-xs-3 col-sm-3 col-md-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSkillModel{{$resume->id}}">
                 Add Skill
             </button>
-            
+
             <!-- Modal -->
             <div class="modal fade" id="addSkillModel{{$resume->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -92,7 +92,7 @@
                                 <strong>Name:</strong>
                                 <input type="text" name="name" class="form-control" placeholder="Name" required>
                             </div>
-                   
+
                             <div class="form-group">
                                 <strong>Description:</strong>
                                 <input type="text" name="desc" class="form-control" placeholder="Description" required>
@@ -124,22 +124,22 @@
                       <td class="align-middle text-center text-sm">{{ $s->id }}</td>
                       <td class="align-middle text-center text-sm">{{ $s->name }}</td>
                       <td class="align-middle text-center text-sm">{{ $s->desc }}</td>
-                     
+
                       <td class="align-middle text-center text-sm">
                             <ul>
-                                @foreach ($s->lecturer as $l)
-                                    <li>{{$l->name}}{{$l->pivot->endorse_status}}</li> 
+                                @foreach ($s->lecturers as $lecturer)
+                                    <li>{{$lecturer->name}} ( {{$lecturer->endorse($s->id)->endorse_status}} )</li>
                                     @endforeach
                             </ul>
                       </td>
-                     
+
                   </tr>
                   </tbody>
                   @endforeach
               </table>
           </div>
-        
-        
+
+
     </div>
    </div>
    <div class="col-xs-12 col-sm-12 col-md-12">
@@ -155,6 +155,6 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
-            
+
 
 @endsection
