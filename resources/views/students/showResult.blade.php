@@ -12,37 +12,37 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Name:</strong>
-                        {{ $applicant->name }}
+                        {{ $student->name }}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Contact:</strong>
-                        {{ $applicant->positions->first()->pivot->contact }}
+                        {{ $applicant->contact }}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Email:</strong>
-                        {{ $applicant->positions->first()->pivot->email }}
+                        {{ $applicant->email }}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Position Name:</strong>
-                        {{ $applicant->positions->first()->position_name }}
+                        {{ $position->position_name }}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Salary:</strong>
-                        {{ $applicant->positions->first()->position_salary }}
+                        {{ $position->position_salary }}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Company Name:</strong>
-                        {{ $applicant->positions->first()->company->name}}
+                        {{ $position->company->name}}
                     </div>
                 </div>
 
@@ -50,33 +50,25 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>IC:</strong>
-                        @foreach($applicant->positions as $p)
-                        {{ $p->pivot->ic }}
-                        @endforeach
+                        {{ $applicant->ic }}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Address:</strong>
-                        @foreach($applicant->positions as $p)
-                        {{ $p->pivot->address }}
-                        @endforeach
+                        {{ $applicant->address }}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Status:</strong>
-                        @foreach($applicant->positions as $p)
-                        {{ $p->pivot->status}}
-                        @endforeach
+                        {{ $applicant->status}}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Day of Birth:</strong>
-                        @foreach($applicant->positions as $p)
-                        {{ $p->pivot->day_of_birth}}
-                        @endforeach
+                        {{ $applicant->day_of_birth}}
                     </div>
                 </div>
                 <div class="col-2">

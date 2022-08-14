@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Applicant;
 use App\Student;
+use App\Position;
 use Illuminate\Http\Request;
 
 class ResultApplicantController extends Controller
@@ -21,19 +22,24 @@ class ResultApplicantController extends Controller
 
     public function show($Applicant_id)
     {
-        $applicant = Student::with('positions')->whereHas('positions', function($q) use ($Applicant_id){
+        $student = Student::whereHas('positions', function($q) use ($Applicant_id){
             $q->where('applicants.id', $Applicant_id);
         })->first();
 
-        return view('students.showResult',compact('applicant'));
+        $position = Position::whereHas('students', function($q) use ($Applicant_id){
+            $q->where('applicants.id', $Applicant_id);
+        })->first();
+
+        $applicant = Applicant::find($Applicant_id);
+
+        return view('students.showResult',compact('applicant','student','position'));
 
     }
 
     public function edit($Applicant_id)
     {
-        $applicant = Student::with('positions')->whereHas('positions', function($q) use ($Applicant_id){
-            $q->where('applicants.id', $Applicant_id);
-        })->first();
+        $applicant = Applicant::find($Applicant_id);
+
         return view('students.applicantEdit',compact('applicant'));
     }
 

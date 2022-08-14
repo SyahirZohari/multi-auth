@@ -27,7 +27,7 @@ class Position extends Model
 
     public function students()
     {
-        return $this->belongsToMany(Student::class,'applicants','student_id','position_id')
+        return $this->belongsToMany(Student::class,'applicants','position_id','student_id')
         ->withPivot(['status','martial_status','ic','address','email','day_of_birth','id','contact'])
         ->using(Applicant::class);
     }
