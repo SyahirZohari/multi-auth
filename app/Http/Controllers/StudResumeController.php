@@ -37,17 +37,15 @@ class StudResumeController extends Controller
 
         $endorsedArray = array();
         foreach ($endorsed as $key => $endorsed_value) {
-            $endorsedArray[$endorsed_value->id]=$endorsed_value->endorse_status;
+            $endorsedArray[$endorsed_value->skill_id]=$endorsed_value->endorse_status;
         }
-
-        $endorsedIds = $endorsed->pluck('id')->toArray();
+        $endorsedIds = $endorsed->pluck('skill_id')->toArray();
         return view('lecturers.studResumeShow',compact('studResume','skills','endorsedIds','endorsedArray'));
     }
 
     public function destroy(Resume $studResume)
     {
         $studResume->delete();
-
-       return redirect()->route('lecturers.studentResume')->with('success','Resume deleted successfully');
+        return redirect()->route('lecturers.studentResume')->with('success','Resume deleted successfully');
     }
 }

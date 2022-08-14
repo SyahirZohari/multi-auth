@@ -10,8 +10,6 @@ use Illuminate\Http\Request;
 
 class EndorseController extends Controller
 {
-
- 
     public function __construct()
     {
         $this->middleware('auth:lecturer');
@@ -27,7 +25,6 @@ class EndorseController extends Controller
         $skills= Skill::pluck('name','id');
 
         return view('lecturers.studResumeShow',compact('skills'));
-
     }
 
     /**
@@ -38,18 +35,14 @@ class EndorseController extends Controller
      */
     public function store(Request $request)
     {
-        
-            $endorse = new EndorseSkill;
-            $endorse->endorse_status = $request->input('endorse_status');
-            $endorse->lecturer_id = auth()->user()->id;
-            $endorse->skill_id= $request->input('skill_id');
-            $endorse->save();
-           
-            return redirect()->route('studResume.index')//MISING URI [URI: studResume/{studResume}].
-                        ->with('success','Skill endorse successfully.');
-        
+        $endorse = new EndorseSkill;
+        $endorse->endorse_status = $request->input('endorse_status');
+        $endorse->lecturer_id = auth()->user()->id;
+        $endorse->skill_id= $request->input('skill_id');
+        $endorse->save();
 
+        return redirect()->route('studResume.index')->with('success','Skill endorse successfully.');
     }
 
-   
+
 }
