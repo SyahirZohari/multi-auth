@@ -34,7 +34,7 @@
                         <td class="align-middle text-center">{{ $r->cgpa }}</td>
                         <td class="align-middle text-center">{{ $r->cpre_status}}</td>
 
-                        <td class="align-middle text-center"><a class="btn btn-primary" href="{{ route('cpre_doc.download', $r->id) }}"  >Download {{$r->id}}</a></td>
+                        <td class="align-middle text-center"><a class="btn btn-primary" href="{{ route('cpre_doc.download', $r->id) }}"  >Download</a></td>
                         
                         <td class="align-middle text-secondary font-weight-bold text-xs">
                             <form action="{{ route('resumes.destroy',$r->id) }}" method="POST">

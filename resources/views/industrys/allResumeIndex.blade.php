@@ -22,7 +22,7 @@
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">CGPA</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">CPRE Status</th>
-                        <!--<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Download CPRE</th>-->
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Download CPRE</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" width="280px">Action</th>
                     </tr>
                     <tbody>
@@ -33,7 +33,7 @@
                         <td class="align-middle text-center text-sm "><img width="180" height="180" src="{{asset('images/'. $r->image) }}"></td>
                         <td class="align-middle text-center">{{ $r->cgpa }}</td>
                         <td class="align-middle text-center">{{ $r->cpre_status}}</td>
-                        <td class="align-middle text-center"><a class="btn btn-primary" href="{{ route('cpre_doc.download', $r->id) }}"  >Download {{$r->id}}</a></td>
+                        <td class="align-middle text-center"><a class="btn btn-primary" href="{{ route('cpre_doc.download', $r->id) }}"  >Download</a></td>
                         <td class="align-middle text-secondary font-weight-bold text-xs">
                             <form action="{{ route('allResumes.destroy',$r->id) }}" method="POST">
             
