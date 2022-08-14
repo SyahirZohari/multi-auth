@@ -30,7 +30,7 @@ class Student extends Authenticatable
     public function positions()
     {
         return $this->belongsToMany(Position::class,'applicants','student_id','position_id')
-        ->withPivot(['status','martial_status','ic','address','email','day_of_birth','contact'])
+        ->withPivot(['status','martial_status','ic','address','email','day_of_birth','contact','id'])
         ->using(Applicant::class);
     }
 }

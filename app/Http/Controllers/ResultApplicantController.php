@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Applicant;
-use App\Position;
-use App\Company;
-use App\Industry;
 use App\Student;
 use Illuminate\Http\Request;
 
@@ -14,30 +11,30 @@ class ResultApplicantController extends Controller
     public function __construct()
     {
         $this->middleware('auth:student');
-
     }
 
     public function index()
     {
         $applicants = Student::with('positions')->find(auth()->user()->id);
-
         return view('students.resultApplicant',compact('applicants'));
     }
 
-    public function show(Position $resultApplicant, Student $student)
+    public function show($Applicant_id)
     {
+        $applicant = Student::with('positions')->whereHas('positions', function($q) use ($Applicant_id){
+            $q->where('applicants.id', $Applicant_id);
+        })->first();
 
-
-        //dd($resultApplicant); //dier keluarkan value job position
-
-        return view('students.showResult',compact('resultApplicant','student'));
+        return view('students.showResult',compact('applicant'));
 
     }
 
-    public function edit(Position $resultApplicant, Student $student)
+    public function edit($Applicant_id)
     {
-        $resultApplicant = Applicant::where('position_id',$resultApplicant->id)->where('student_id',$student->id)->first();
-        return view('students.applicantEdit',compact('resultApplicant', 'student'));
+        $applicant = Student::with('positions')->whereHas('positions', function($q) use ($Applicant_id){
+            $q->where('applicants.id', $Applicant_id);
+        })->first();
+        return view('students.applicantEdit',compact('applicant'));
     }
 
 
@@ -53,14 +50,6 @@ class ResultApplicantController extends Controller
 
         $resultApplicant->update($request->all());
 
-        return redirect()->route('positions.index')
-                        ->with('success','Position updated successfully');
+        return redirect()->route('positions.index')->with('success','Position updated successfully');
     }
-
-
-
-
-
-
-
 }
