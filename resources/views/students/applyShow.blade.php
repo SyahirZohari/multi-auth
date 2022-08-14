@@ -8,7 +8,7 @@
             <h1 class="h3 mb-2 text-gray-800">Job Position</h1>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
-            <div class="row">
+            <div class="mt-2">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Name:</strong>
@@ -45,7 +45,7 @@
                         {{ $apply->industry->name }}
                     </div>
                 </div>
-                <div class="pull-right">
+                <div class="col-2 pull-right">
                         <a class="btn btn-primary" href="{{ route('applys.index') }}"> Back</a>
                 </div>
             </div>
