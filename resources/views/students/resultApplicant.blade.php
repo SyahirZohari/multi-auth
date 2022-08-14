@@ -30,7 +30,7 @@
                     <tbody>
                       @foreach($applicants->positions as $a)
                     <tr>
-                        <td class="text-xs font-weight-bold mb-0">{{ $a->id }}</td>
+                        <td class="text-xs font-weight-bold mb-0">{{ $a->pivot->id }}</td>
                         <td class="align-middle text-center text-sm">{{  $a->pivot->email  }}</td>
                         <td class="align-middle text-center">{{ $a->pivot->contact}}</td>
                         <td class="align-middle text-center">{{ $a->pivot->martial_status}}</td>
@@ -38,8 +38,8 @@
                         <td class="align-middle text-center">{{ $a->company->name}}</td>
                         <td class="align-middle text-center">{{ $a->pivot->status }}</td>
                         <td class="text-secondary font-weight-bold text-xs">
-                                <a class="btn btn-info" href="{{ route('resultApplicants.show',['resultApplicant'=>$a->id,'student'=>$applicants->id]) }}">Show</a>
-                                <a class="btn btn-primary" href="{{ route('resultApplicants.edit',['resultApplicant'=>$a->id,'student'=>$applicants->id]) }}">Update</a>
+                                <a class="btn btn-info" href="{{ route('resultApplicants.show',['Applicant'=>$a->pivot->id]) }}">Show</a>
+                                <a class="btn btn-primary" href="{{ route('resultApplicants.edit',['Applicant'=>$a->pivot->id]) }}">Update</a>
 
                         </td>
                     </tr>
