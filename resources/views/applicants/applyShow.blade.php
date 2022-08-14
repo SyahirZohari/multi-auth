@@ -11,78 +11,70 @@
     </div>
 
     <div class="card">
-        <div class="row">
+        <div class="row mt-3">
             <!-- Pivot Data IC, Address,day of birth, status-->
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>IC:</strong>
-                    @foreach($student->position as $p)
-                    {{ $p->pivot->ic }}
-                    @endforeach
+                    {{ $applicant->positions->first()->pivot->ic }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Email:</strong>
-                    {{ $student->email }}
+                    {{ $applicant->positions->first()->pivot->email }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Day Of Birth:</strong>
-                    @foreach($student->position as $p)
-                    {{ $p->pivot->day_of_birth }}
-                    @endforeach
+                    {{ $applicant->positions->first()->pivot->day_of_birth }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Address:</strong>
-                    @foreach($student->position as $p)
-                    {{ $p->pivot->address }}
-                    @endforeach
+                    {{ $applicant->positions->first()->pivot->address }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Contact:</strong>
-                    {{ $student->contact }}
+                    {{ $applicant->positions->first()->pivot->contact }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Martial Status:</strong>
-                    @foreach($student->position as $p)
-                    {{ $p->pivot->martial_status }}
-                    @endforeach
+                    {{ $applicant->positions->first()->pivot->martial_status }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Position Name:</strong>
-                    {{ $applicant->position_name }}
+                    {{ $applicant->positions->first()->position_name }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Company Name:</strong>
-                    {{ $applicant->company->name }}
+                    {{ $applicant->positions->first()->company->name }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Salary:</strong>
-                    {{ $applicant->position_salary}}
+                    {{ $applicant->positions->first()->position_salary}}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Department:</strong>
-                    {{ $applicant->position_department }}
+                    {{ $applicant->positions->first()->position_department }}
                 </div>
             </div>
 
-      
+
         <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('applicants.index') }}"> Back</a>
         </div>
