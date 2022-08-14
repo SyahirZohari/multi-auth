@@ -72,7 +72,7 @@ Route::group(['middleware' => 'auth:student'], function () {
     Route::resource('skills','SkillController');
     Route::get('resultApplicants','ResultApplicantController@index')->name('resultApplicants.index');
     Route::get('resultApplicants/{resultApplicant}/{student}','ResultApplicantController@show')->name('resultApplicants.show');
-    Route::get('resultApplicants/{resultApplicant}','ResultApplicantController@update')->name('resultApplicants.update');
+    Route::put('resultApplicants/{resultApplicant}','ResultApplicantController@update')->name('resultApplicants.update');
     Route::get('resultApplicants/{resultApplicant}/{student}/edit','ResultApplicantController@edit')->name('resultApplicants.edit');
     //Route::resource('resultApplicants','ResultApplicantController');
     //Route::get('skills','SkillController@index')->name('skills.index');
@@ -97,7 +97,7 @@ Route::group(['middleware' => 'auth:industry'], function () {
 	Route::put('industryprofile', ['as' => 'industryprofile.update', 'uses' => 'IndustryProfileController@update']);
     Route::get('applicants','ApplicantController@index')->name('applicants.index');
     Route::get('applicants/{applicant}/{student}','ApplicantController@show')->name('applicants.show');
-    Route::PUT('applicants/{applicant}','ApplicantController@update')->name('applicants.update');
+    Route::put('applicants/{applicant}','ApplicantController@update')->name('applicants.update');
     Route::get('applicants/{applicant}/{student}/edit','ApplicantController@edit')->name('applicants.edit');
     //Route::resource('applicants','ApplicantController');
     Route::resource('allResumes','AllResumeController');
