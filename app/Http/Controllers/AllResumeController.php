@@ -15,32 +15,26 @@ class AllResumeController extends Controller
     public function __construct()
     {
         $this->middleware('auth:industry');
-       
+
     }
 
-   
     public function index()
     {
-        //$position = Position::all();
         $resume= Resume::with('student')
         ->get();
-  
+
         return view('industrys.allResumeIndex',compact('resume'));
     }
 
-    
     public function show(Resume $allResume)
     {
-
-        $skills = Skill::with('lecturer')
+        $skills = Skill::with('lecturers')
         ->where ('resume_id',$allResume->id)
         ->get();
-        
 
         return view('industrys.allResumeShow',compact('allResume','skills'));
-
     }
-    
+
     public function destroy(Resume $resume)
     {
         $resume->delete();
@@ -49,5 +43,5 @@ class AllResumeController extends Controller
        ->with('success','Resume deleted successfully');
     }
 }
-    
-   
+
+

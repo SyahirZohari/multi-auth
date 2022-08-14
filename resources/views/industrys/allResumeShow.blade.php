@@ -9,9 +9,9 @@
             </div>
         </div>
     </div>
-  
+
    <div class="card">
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
@@ -54,8 +54,8 @@
                 {{ $allResume->cgpa }}
             </div>
         </div>
-        
-            
+
+
         <div class="table-responsive p-0">
             <table class="table align-items-center mb-0">
           <div class="table-responsive">
@@ -71,30 +71,30 @@
                       <td class="align-middle text-center text-sm">{{ $s->id }}</td>
                       <td class="align-middle text-center text-sm">{{ $s->name }}</td>
                       <td class="align-middle text-center text-sm">{{ $s->desc }}</td>
-                     
+
                       <td class="align-middle text-center text-sm">
                             <ul>
-                                @foreach ($s->lecturer as $l)
-                                    <li>{{$l->name}}{{$l->pivot->endorse_status}}</li> 
+                                @foreach ($s->lecturers as $lecturer)
+                                    <li>{{$lecturer->name}} ( {{$lecturer->endorse($s->id)->endorse_status}} )</li>
                                     @endforeach
                             </ul>
                       </td>
-                     
+
                   </tr>
                   </tbody>
                   @endforeach
               </table>
           </div>
-        
-        
+
+
     </div>
    </div>
-   <div class="col-xs-12 col-sm-12 col-md-12">
+   <center class="mt-2">
     <a class="btn btn-primary" href="{{ route('allResumes.index') }}"> Back</a>
-    </div>
+</center>
     </div>
 </div>
 
-            
+
 
 @endsection
