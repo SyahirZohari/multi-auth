@@ -98,11 +98,11 @@
                         <!-- Button trigger modal -->
                         @if (in_array($skill->id, $endorsedIds))
                         <button type="button" class="btn btn-outline-secondary" disabled>
-                            Endorsed
+                            Endorsed {{$skill->id}}
                         </button>
                         @else
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#endorseSkillModel{{$skill->id}}"  href="{{ route('endorse.create',$skill->id) }}">
-                            Endorse
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#endorseSkillModel{{$skill->id}}">
+                            Endorse {{$skill->id}}
                         </button>
                         @endif
                     </td>
@@ -111,8 +111,6 @@
                   @endforeach
               </table>
           </div>
-
-
 
           @foreach ($skills as $skill)
           <!-- Modal -->
@@ -135,11 +133,7 @@
                         <input class="form-check-input" type="radio" name="endorse_status" id="inlineRadio2" value="No">
                         <label class="form-check-label" for="inlineRadio2">No</label>
                       </div>
-
                       <input type="hidden" name="skill_id" value="{{$skill->id}}">
-
-
-
                     </div>
 
                 <div class="modal-footer">
