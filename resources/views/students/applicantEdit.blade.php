@@ -20,7 +20,7 @@
         </div>
     @endif
 
-    <form action="{{ route('resultApplicants.update',$applicant->positions->first()->pivot->id) }}" method="POST">
+    <form action="{{ route('resultApplicants.update',$applicant->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="card">
@@ -28,13 +28,13 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>IC:</strong>
-                    <input type="text" name="ic" class="form-control" value="{{$applicant->positions->first()->pivot->ic}}" required>
+                    <input type="text" name="ic" class="form-control" value="{{$applicant->ic}}" required>
                 </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
             <strong>Address:</strong>
-                <textarea class="form-control" style="height:150px" name="address" > {{ $applicant->positions->first()->pivot->address}}</textarea>
+                <textarea class="form-control" style="height:150px" name="address" > {{ $applicant->address}}</textarea>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -42,10 +42,10 @@
                 <strong>Marital Status:</strong>
             <select class="form-control" name="martial_status">
                 <option value="">-- Choose Martial Status --</option>
-                    <option value="Single" @if ($applicant->positions->first()->pivot->martial_status === 'Single')
+                    <option value="Single" @if ($applicant->martial_status === 'Single')
                         {{' selected'}}
                     @endif>Single</option>
-                    <option value="Married" @if ($applicant->positions->first()->pivot->martial_status === 'Married')
+                    <option value="Married" @if ($applicant->martial_status === 'Married')
                         {{' selected'}}
                     @endif>Married</option>
             </select>
@@ -54,13 +54,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Day of Birth:</strong>
-                <input type="date" name="day_of_birth" class="form-control" value="{{ $applicant->positions->first()->pivot->day_of_birth}}">
+                <input type="date" name="day_of_birth" class="form-control" value="{{ $applicant->day_of_birth}}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Contact:</strong>
-                <input type="text" name="contact" class="form-control" value="{{ $applicant->positions->first()->pivot->contact}}" >
+                <input type="text" name="contact" class="form-control" value="{{ $applicant->contact}}" >
             </div>
         </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center mb-2">
