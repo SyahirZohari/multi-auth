@@ -6,6 +6,7 @@ use App\Student;
 use App\Resume;
 use App\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class StudResumeController extends Controller
@@ -32,6 +33,7 @@ class StudResumeController extends Controller
 
         $endorsed = DB::table('endorse_skills')
         ->select('*')
+        ->where('lecturer_id',Auth::id())
         ->whereIn('skill_id', $skills->pluck('id')->toArray())
         ->get();
 

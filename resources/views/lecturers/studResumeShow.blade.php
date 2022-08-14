@@ -98,11 +98,11 @@
                         <!-- Button trigger modal -->
                         @if (in_array($skill->id, $endorsedIds))
                         <button type="button" class="btn btn-outline-secondary" disabled>
-                            Endorsed {{$skill->id}}
+                            Endorsed
                         </button>
                         @else
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#endorseSkillModel{{$skill->id}}">
-                            Endorse {{$skill->id}}
+                            Endorse
                         </button>
                         @endif
                     </td>
