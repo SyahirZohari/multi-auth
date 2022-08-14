@@ -87,8 +87,8 @@ Route::group(['middleware' => 'auth:lecturer'], function () {
     Route::resource('studResume','StudResumeController');
     Route::resource('allCompanies','AllCompanyController');
     Route::resource('endorse','EndorseController');
-    
-    
+
+
 });
 
 Route::group(['middleware' => 'auth:industry'], function () {
@@ -97,7 +97,7 @@ Route::group(['middleware' => 'auth:industry'], function () {
 	Route::put('industryprofile', ['as' => 'industryprofile.update', 'uses' => 'IndustryProfileController@update']);
     Route::get('applicants','ApplicantController@index')->name('applicants.index');
     Route::get('applicants/{applicant}/{student}','ApplicantController@show')->name('applicants.show');
-    Route::get('applicants/{applicant}','ApplicantController@update')->name('applicants.update');
+    Route::PUT('applicants/{applicant}','ApplicantController@update')->name('applicants.update');
     Route::get('applicants/{applicant}/{student}/edit','ApplicantController@edit')->name('applicants.edit');
     //Route::resource('applicants','ApplicantController');
     Route::resource('allResumes','AllResumeController');
