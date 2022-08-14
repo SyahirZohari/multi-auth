@@ -74,6 +74,8 @@ Route::group(['middleware' => 'auth:student'], function () {
     Route::get('resultApplicants/{resultApplicant}/{student}','ResultApplicantController@show')->name('resultApplicants.show');
     Route::get('resultApplicants/{resultApplicant}','ResultApplicantController@update')->name('resultApplicants.update');
     Route::get('resultApplicants/{resultApplicant}/{student}/edit','ResultApplicantController@edit')->name('resultApplicants.edit');
+
+    Route::get('download/{cpre_doc}', 'DownloadCPREController@download')->name('cpre_doc.download');
     //Route::resource('resultApplicants','ResultApplicantController');
     //Route::get('skills','SkillController@index')->name('skills.index');
     //Route::post('skills/{skill}','SkillController@store')->name('skills.store');

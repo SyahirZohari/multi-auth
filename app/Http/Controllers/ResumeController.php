@@ -54,8 +54,6 @@ class ResumeController extends Controller
         $request->image->move(public_path('images'),$newImageName);
 
 
-    
-
         $file = $request->file('cpre_doc');
         $filename = $file->getClientOriginalName();
         $filename = time().'.'.$filename;
